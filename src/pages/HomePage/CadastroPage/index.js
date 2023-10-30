@@ -1,2 +1,1 @@
-
 export{CadastroPage} from './Cadastro'

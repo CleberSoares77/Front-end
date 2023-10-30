@@ -1,0 +1,1 @@
+export {TelaPrincipalPage} from './TelaPrincipalPage'
