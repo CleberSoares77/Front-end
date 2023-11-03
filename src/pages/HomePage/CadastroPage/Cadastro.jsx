@@ -5,7 +5,10 @@ import {
     Heading,
     Input,
     Button,
-    Wrap
+    Wrap,
+    FormControl,
+    FormLabel,
+    Select
 } from "@chakra-ui/react"
 
 export function CadastroPage() {
@@ -26,6 +29,13 @@ export function CadastroPage() {
                             size="md"
                             type="datetime-local"
                         />
+                        <FormControl>
+                            <FormLabel>País</FormLabel>
+                            <Select placeholder='Selecione o país:'>
+                                <option>United Arab Emirates</option>
+                                <option>Nigeria</option>
+                            </Select>
+                        </FormControl>
                     </Wrap>
                 </Box>
             </Center>
