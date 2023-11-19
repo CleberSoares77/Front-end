@@ -19,7 +19,7 @@ export function CadastroPage() {
                 <Box padding='4' color='black' maxW='xl'>
                     <Wrap spacing={4}>
                         <Heading>
-                            Cleber
+                            Cleber J S Santos
                         </Heading>
                         <Input
                             placeholder="Select Date and Time"
