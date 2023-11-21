@@ -10,7 +10,6 @@ import {
     RadioGroup,
     Stack,
     Radio
-
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
@@ -21,18 +20,22 @@ export function CadastroPage() {
         senha: "",
         confirmarSenha: "",
         estado: "",
-        cidade: "",
+        curriculo: null, // Adicionado campo de currículo
     });
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, files } = e.target;
 
-        // Se o campo alterado for o estado, limpe a cidade selecionada
         if (name === "estado") {
             setFormData((prevData) => ({
                 ...prevData,
                 [name]: value,
-                cidade: "",
+            }));
+        } else if (name === "curriculo" && files.length > 0) {
+            // Armazena o arquivo de currículo
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: files[0],
             }));
         } else {
             setFormData((prevData) => ({
@@ -44,7 +47,18 @@ export function CadastroPage() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log("Dados do formulário:", formData);
+        
+        // Crie um objeto FormData para enviar o arquivo
+        const formDataToSend = new FormData();
+        formDataToSend.append("nome", formData.nome);
+        formDataToSend.append("email", formData.email);
+        formDataToSend.append("senha", formData.senha);
+        formDataToSend.append("confirmarSenha", formData.confirmarSenha);
+        formDataToSend.append("estado", formData.estado);
+        formDataToSend.append("curriculo", formData.curriculo);
+
+        console.log("Dados do formulário:", formDataToSend);
+
         // Adicione aqui a lógica para enviar os dados para o servidor ou realizar outras ações necessárias
     };
 
@@ -92,28 +106,28 @@ export function CadastroPage() {
                             />
 
                             <Input
-                                placeholder="Select Date and Time"
-                                size="md"
-                                type="datetime-local"
+                                type="file" // Campo de currículo em PDF
+                                name="curriculo"
+                                onChange={handleInputChange}
                                 mt={2}
                             />
 
-                            <RadioGroup defaultValue='1'>
-                                <Stack spacing={4} direction='row'>
-                                    <Radio value='2'>Masculino</Radio>
-                                    <Radio value='3'>Feminino3</Radio>
-                                    <Radio value='4'>Outro(a)</Radio>
+                            <RadioGroup defaultValue="1">
+                                <Stack spacing={4} direction="row">
+                                    <Radio value="2">Masculino</Radio>
+                                    <Radio value="3">Feminino</Radio>
+                                    <Radio value="4">Outro(a)</Radio>
                                 </Stack>
                             </RadioGroup>
-                            
 
                             <Button type="submit" colorScheme="teal" mt={4}>
                                 Cadastrar
                             </Button>
                         </form>
-                        <Link to="/entrar" mt={4}>
-                            Já tem uma conta? Entre aqui.
-                        </Link>
+                        <Wrap spacing={60} direction="row" mt={4}>
+                            <Link to="/entrar">Já tem uma conta? Entre aqui.</Link>
+                            <Link to="/">Voltar</Link>
+                        </Wrap>
                     </Wrap>
                 </Box>
             </Center>
