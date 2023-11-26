@@ -1,83 +1,93 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
-    Container,
-    Box,
-    Center,
-    Heading,
-    Input,
-    Button,
-    Wrap,
-    ButtonGroup
-  } from "@chakra-ui/react";
-  import { Link } from "react-router-dom"; // Importe o Link do React Router
-  
-  export function HomePage() {
-    return (
-      <Container maxW="2xl" centerContent height="100vh">
-        <Center h="40vh">
-          <Box padding="4" color="black" maxW="xl">
-            <Wrap spacing={4}>
-              <Heading>Olá, Seja bem-vindo(a)</Heading>
-              <Input variant="outline" placeholder="E-mail" type="email" />
-              <Input variant="outline" placeholder="Senha" type="password" />
-                <Link to="/cadastro">
-                  <Button colorScheme="teal" marginBottom="2">
-                    Cadastre-se
-                  </Button>
-                </Link>
-                <Link to="/entrar">
-                  <Button colorScheme="teal" marginBottom="2">
-                    Entrar
-                  </Button>
-                </Link>
-                <ButtonGroup flexDirection="column" align="center">
-                {/* Adicione um botão para "Esqueceu a senha?" abaixo dos campos de cadastro e entrar */}
-                <Link to="/esqueceu-senha">
-                  <Button colorScheme="teal" variant="link">
-                    Esqueceu a senha?
-                  </Button>
-                </Link>
-              </ButtonGroup>
-            </Wrap>
-          </Box>
-        </Center>
-      </Container>
-    );
-  }
-  
-/*import {
-    Container,
-    Box,
-    Center,
-    Heading,
-    Input,
-    Button,
-    Wrap,
-    ButtonGroup
-} from "@chakra-ui/react"
+  Container,
+  Box,
+  Center,
+  Heading,
+  Input,
+  Button,
+  Wrap,
+  ButtonGroup,
+  FormControl,
+  FormLabel,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 
 export function HomePage() {
-    return (
-        <Container
-            maxW='2xl'
-            centerContent
-            height='100vh'
-        >
-            <Center h='40vh'>
-                <Box padding='4' color='black' maxW='xl'>
-                    <Wrap spacing={4}>
-                        <Heading>
-                            Olá, Seja bem-vindo(a)
-                        </Heading>
-                        <Input variant='outline' placeholder='E-mail' type="email" />
-                        <Input variant='outline' placeholder='Senha' type='password' />
-                        <ButtonGroup gap='2'>
-                            <Button colorScheme='teal'>Cadastre-se</Button>
-                            <Button colorScheme='teal'>Entrar</Button>
-                        </ButtonGroup>
-                    </Wrap>
-                </Box>
-            </Center>
-        </Container>
-    )
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+
+  const isFormValid = email.trim() !== "" && password.trim() !== "";
+
+  const handleLogin = () => {
+    if (isFormValid) {
+      // Adicione aqui a lógica de login ou redirecionamento
+      console.log("Campos preenchidos:", email, password);
+    } else {
+      setShowAlert(true);
+    }
+  };
+
+  return (
+    <Container maxW="2xl" centerContent height="100vh">
+      <Center h="70vh">
+        <Box padding="4" color="black" maxW="xl">
+          <Wrap spacing={4}>
+            <Heading>Olá, Seja bem-vindo(a)</Heading>
+            <FormControl>
+              <FormLabel>E-mail</FormLabel>
+              <Input
+                variant="outline"
+                placeholder="E-mail"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Senha</FormLabel>
+              <Input
+                variant="outline"
+                placeholder="Senha"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </FormControl>
+            {showAlert && (
+              <Alert status="warning" marginBottom="4">
+                <AlertIcon />
+                Preencha todos os campos.
+              </Alert>
+            )}
+            <Link to="/cadastro">
+              <Button colorScheme="teal" marginBottom="2">
+                Cadastre-se
+              </Button>
+            </Link>
+            <Button
+              colorScheme="teal"
+              marginBottom="2"
+              onClick={handleLogin}
+              disabled={!isFormValid}
+            >
+              Entrar
+            </Button>
+            <ButtonGroup flexDirection="column" align="center">
+              <Link to="/">
+                <Button colorScheme="teal" variant="link">
+                  Esqueceu a senha?
+                </Button>
+              </Link>
+            </ButtonGroup>
+          </Wrap>
+        </Box>
+      </Center>
+    </Container>
+  );
 }
-*/

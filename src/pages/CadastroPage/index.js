@@ -1,1 +1,1 @@
-export {CadastroPage} from './Cadastro'
+export {CadastroPage} from "./Cadastropage"

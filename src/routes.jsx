@@ -6,7 +6,7 @@ import { Protected } from './hooks/Protected'
 
 import {HomePage} from './pages/HomePage'
 import { LoginPage } from './pages/LoginPage'
-import { CadastroPage } from './pages/HomePage/CadastroPage'
+import { CadastroPage } from './pages/CadastroPage'
 
 const myRouter = createBrowserRouter([
     {
