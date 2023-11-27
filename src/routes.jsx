@@ -4,13 +4,20 @@ import{
 
 import { Protected } from './hooks/Protected'
 
-import {HomePage} from './pages/HomePage'
+import { HomePage } from './pages/HomePage'
 import { LoginPage } from './pages/LoginPage'
 import { CadastroPage } from './pages/CadastroPage'
+import { TelaPrincipalPage } from './pages/TelaPrincipalPage'
 
 const myRouter = createBrowserRouter([
+
     {
         path: '/',
+        element:<TelaPrincipalPage/>
+           
+    }, 
+    {
+        path: '/login',
         element: <HomePage/>
     },
     {

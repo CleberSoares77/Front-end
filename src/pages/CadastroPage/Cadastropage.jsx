@@ -1,136 +1,102 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Container,
     Box,
-    Center,
     Heading,
+    Text,
     Input,
+    Select,
     Button,
     Wrap,
-    RadioGroup,
-    Stack,
-    Radio
+    Link as ChakraLink,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 export function CadastroPage() {
-    const [formData, setFormData] = useState({
-        nome: "",
-        email: "",
-        senha: "",
-        confirmarSenha: "",
-        estado: "",
-        curriculo: null, // Adicionado campo de currículo
-    });
-
-    const handleInputChange = (e) => {
-        const { name, value, files } = e.target;
-
-        if (name === "estado") {
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-        } else if (name === "curriculo" && files.length > 0) {
-            // Armazena o arquivo de currículo
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: files[0],
-            }));
-        } else {
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-        }
-    };
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        
-        // Crie um objeto FormData para enviar o arquivo
-        const formDataToSend = new FormData();
-        formDataToSend.append("nome", formData.nome);
-        formDataToSend.append("email", formData.email);
-        formDataToSend.append("senha", formData.senha);
-        formDataToSend.append("confirmarSenha", formData.confirmarSenha);
-        formDataToSend.append("estado", formData.estado);
-        formDataToSend.append("curriculo", formData.curriculo);
-
-        console.log("Dados do formulário:", formDataToSend);
-
-        // Adicione aqui a lógica para enviar os dados para o servidor ou realizar outras ações necessárias
-    };
-
     return (
-        <Container maxW="2xl" centerContent height="100vh">
-            <Center h="100vh">
-                <Box padding="4" color="black" maxW="xl">
-                    <Wrap spacing={4} direction="column">
-                        <Heading>Cadastro</Heading>
-                        <form onSubmit={handleFormSubmit}>
-                            <Input
-                                placeholder="Nome"
-                                size="md"
-                                name="nome"
-                                onChange={handleInputChange}
-                                value={formData.nome}
-                                mt={2}
-                            />
-                            <Input
-                                placeholder="E-mail"
-                                size="md"
-                                name="email"
-                                type="email"
-                                onChange={handleInputChange}
-                                value={formData.email}
-                                mt={2}
-                            />
-                            <Input
-                                placeholder="Senha"
-                                size="md"
-                                name="senha"
-                                type="password"
-                                onChange={handleInputChange}
-                                value={formData.senha}
-                                mt={2}
-                            />
-                            <Input
-                                placeholder="Confirme a Senha"
-                                size="md"
-                                name="confirmarSenha"
-                                type="password"
-                                onChange={handleInputChange}
-                                value={formData.confirmarSenha}
-                                mt={2}
-                            />
+        <Container
+            maxW="xl"
+            centerContent
+            height="115vh"
+            bgColor="#49a2ab"
+            color="black"
+        >
+            <Heading textAlign="center">Cadastro de Usuário</Heading>
+            <Box
+                maxW="500px"
+                w="100%"
+                bgColor="white"
+                p="20px"
+                borderRadius="5px"
+                boxShadow="md"
+                mt="20px"
+                position="relative"
+            >
+                <form>
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Nome:
+                    </Text>
+                    <Input type="text" id="nome" name="nome" required mb="15px" />
 
-                            <Input
-                                type="file" // Campo de currículo em PDF
-                                name="curriculo"
-                                onChange={handleInputChange}
-                                mt={2}
-                            />
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Sobrenome:
+                    </Text>
+                    <Input type="text" id="sobrenome" name="sobrenome" required mb="15px" />
 
-                            <RadioGroup defaultValue="1">
-                                <Stack spacing={4} direction="row">
-                                    <Radio value="2">Masculino</Radio>
-                                    <Radio value="3">Feminino</Radio>
-                                    <Radio value="4">Outro(a)</Radio>
-                                </Stack>
-                            </RadioGroup>
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Data de Nascimento:
+                    </Text>
+                    <Input type="date" id="dataNascimento" name="dataNascimento" required mb="15px" />
 
-                            <Button type="submit" colorScheme="teal" mt={4}>
-                                Cadastrar
-                            </Button>
-                        </form>
-                        <Wrap spacing={60} direction="row" mt={4}>
-                            <Link to="/">Já tem uma conta? Entre aqui.</Link>
-                            <Link to="/">Voltar</Link>
-                        </Wrap>
-                    </Wrap>
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Gênero:
+                    </Text>
+                    <Select id="genero" name="genero" mb="15px">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </Select>
+
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Email:
+                    </Text>
+                    <Input type="email" id="email" name="email" required mb="15px" />
+
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Senha:
+                    </Text>
+                    <Input type="password" id="senha" name="senha" required mb="15px" />
+
+                    <Text as="label" display="block" mb="10px" fontWeight="bold">
+                        Confirmar Senha:
+                    </Text>
+                    <Input type="password" id="confirmarSenha" name="confirmarSenha" required mb="15px" />
+
+                    <Button
+                        type="submit"
+                        bgColor="#95a694"
+                        color="#010300"
+                        px="20px"
+                        borderRadius="3px"
+                        fontSize="18px"
+                        cursor="pointer"
+                        _hover={{ bgColor: "#0056b3" }}
+                    >
+                        Cadastrar
+                    </Button>
+                </form>
+
+                <Wrap spacing={20} direction="row" mt={4}>
+                    <Link to="/login">Já tem uma conta? Entre aqui.</Link>
+                </Wrap>
+
+                {/* Botão "Voltar" no canto inferior direito */}
+                <Box position="absolute" bottom="10px" right="10px">
+                    <ChakraLink as={Link} to="/" textDecoration="none" color="#007bff">
+                        Voltar
+                    </ChakraLink>
                 </Box>
-            </Center>
+            </Box>
         </Container>
     );
 }

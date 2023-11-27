@@ -36,7 +36,8 @@ export function HomePage() {
       <Center h="70vh">
         <Box padding="4" color="black" maxW="xl">
           <Wrap spacing={4}>
-            <Heading>Olá, Seja bem-vindo(a)</Heading>
+            
+            <Heading>Acesse a sua conta</Heading>
             <FormControl>
               <FormLabel>E-mail</FormLabel>
               <Input
