@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage'
 import { LoginPage } from './pages/LoginPage'
 import { CadastroPage } from './pages/CadastroPage'
 import { TelaPrincipalPage } from './pages/TelaPrincipalPage'
+import { Empresa } from './pages/EmpresaPage'
 
 const myRouter = createBrowserRouter([
 
@@ -27,6 +28,11 @@ const myRouter = createBrowserRouter([
     {
         path: '/Cadastro',
         element:<CadastroPage/>
+           
+    },
+    {
+        path: '/Empresa',
+        element:<Empresa/>
            
     }
 ])

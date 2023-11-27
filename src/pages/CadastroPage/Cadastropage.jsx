@@ -17,7 +17,7 @@ export function CadastroPage() {
         <Container
             maxW="xl"
             centerContent
-            height="115vh"
+            height="120vh"
             bgColor="#49a2ab"
             color="black"
         >
