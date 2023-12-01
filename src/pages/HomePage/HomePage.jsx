@@ -80,7 +80,7 @@ export function HomePage() {
               Entrar
             </Button>
             <ButtonGroup flexDirection="column" align="center">
-              <Link to="/">
+              <Link to="/redefinir">
                 <Button colorScheme="teal" variant="link">
                   Esqueceu a senha?
                 </Button>

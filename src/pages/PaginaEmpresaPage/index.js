@@ -1,0 +1,1 @@
+export {PaginaEmpresa} from './PaginaEmpresa'

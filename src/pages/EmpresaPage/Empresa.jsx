@@ -68,7 +68,7 @@ export function Empresa() {
             cursor="pointer"
             _hover={{ bgColor: "#0056b3" }}
           >
-            Cadastrar Empresa
+            Cadastrar Empresa?
           </Button>
         </form>
       </Box>

@@ -9,6 +9,8 @@ import { LoginPage } from './pages/LoginPage'
 import { CadastroPage } from './pages/CadastroPage'
 import { TelaPrincipalPage } from './pages/TelaPrincipalPage'
 import { Empresa } from './pages/EmpresaPage'
+import { EsqueceuSenhaPage } from './pages/EsqueceuSenhaPage'
+import { PaginaEmpresa } from './pages/PaginaEmpresaPage'
 
 const myRouter = createBrowserRouter([
 
@@ -33,6 +35,15 @@ const myRouter = createBrowserRouter([
     {
         path: '/Empresa',
         element:<Empresa/>
+           
+    },
+    {
+        path: '/redefinir',
+        element: <EsqueceuSenhaPage/>
+    },
+    {
+        path: '/index',
+        element:<PaginaEmpresa/>
            
     }
 ])
