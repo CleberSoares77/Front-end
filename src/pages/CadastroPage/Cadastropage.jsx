@@ -52,13 +52,14 @@ export function CadastroPage() {
                         Gênero:
                     </Text>
                     <Select id="genero" name="genero" mb="15px">
+                        <option value="?">?</option>
                         <option value="masculino">Masculino</option>
                         <option value="feminino">Feminino</option>
                         <option value="outro">Outro</option>
                     </Select>
 
                     <Text as="label" display="block" mb="10px" fontWeight="bold">
-                        Email:
+                        E-mail:
                     </Text>
                     <Input type="email" id="email" name="email" required mb="15px" />
 
@@ -87,7 +88,7 @@ export function CadastroPage() {
                 </form>
 
                 <Wrap spacing={20} direction="row" mt={4}>
-                    <Link to="/login">Já tem uma conta? Entre aqui.</Link>
+                    <Link to="/login">Já tem uma conta? Clique aqui</Link>
                 </Wrap>
 
                 {/* Botão "Voltar" no canto inferior direito */}
