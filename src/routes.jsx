@@ -11,6 +11,7 @@ import { TelaPrincipalPage } from './pages/TelaPrincipalPage'
 import { Empresa } from './pages/EmpresaPage'
 import { EsqueceuSenhaPage } from './pages/EsqueceuSenhaPage'
 import { PaginaEmpresa } from './pages/PaginaEmpresaPage'
+import { PaginaLoginEmpresa } from './pages/PaginaLoginEmpresa'
 
 const myRouter = createBrowserRouter([
 
@@ -42,8 +43,13 @@ const myRouter = createBrowserRouter([
         element: <EsqueceuSenhaPage/>
     },
     {
-        path: '/index',
+        path: '/cadastroEmpresa',
         element:<PaginaEmpresa/>
+           
+    },
+    {
+        path: '/index',
+        element:<PaginaLoginEmpresa/>
            
     }
 ])

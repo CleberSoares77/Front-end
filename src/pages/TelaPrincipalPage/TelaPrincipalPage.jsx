@@ -12,7 +12,7 @@ export function TelaPrincipalPage() {
             Sistema de divulgação de vagas de empregos na região do médio Vale do Jequitinhonha.
           </Text>
           <Text>Caso sua intenção seja fornecer oportunidades de empregos:</Text>
-          <Button colorScheme="blue" as={NavLink} to="/empresa">
+          <Button colorScheme="blue" as={NavLink} to="/index">
             <strong>Cadastro Empresa</strong>
           </Button>
           <Text>Está procurando uma oportunidade de emprego:</Text>
